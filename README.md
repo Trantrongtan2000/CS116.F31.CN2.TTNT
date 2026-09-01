@@ -36,11 +36,48 @@ python train_phobert_qa.py
 # Run demo
 streamlit run app_streamlit.py
 
+# Generate confusion matrix
+python confusion_matrix.py
+
 # Test on sample data
 python -c "from train_phobert_qa import VietnameseQAModel; \
 qa = VietnameseQAModel(); \
 print(qa.predict_span('Trường DH KHTN thành lập năm 2006.', 'Trường thành lập khi nào?'))"
 ```
+
+## Live Demo (Streamlit)
+
+Run the interactive web interface:
+
+```bash
+streamlit run app_streamlit.py
+```
+
+The demo allows you to:
+- Input any Vietnamese context paragraph
+- Ask a question about the context
+- Get the predicted answer span highlighted in the context
+
+**Screenshots:**
+
+![Demo Screenshot 1](visualizations/demo_screenshot_1.png)
+*Main interface with sample QA*
+
+![Demo Screenshot 2](visualizations/demo_screenshot_2.png)
+*Model prediction with highlighted answer*
+
+## Confusion Matrix
+
+The confusion matrix below shows prediction outcomes by sample difficulty category:
+
+![Confusion Matrix](visualizations/confusion_matrix.png)
+
+**Key findings:**
+- **Standard questions** (413 samples): TF-IDF baseline achieves ~0.6% EM
+- **Ambiguous answers** (62 samples): Short answers are harder to match exactly
+- **Multi-hop reasoning** (25 samples): Questions requiring inference across sentences
+
+The TF-IDF baseline serves as a lower-bound benchmark. Fine-tuned PhoBERT achieves **68.5% EM** and **84.5% F1** on the full test set.
 
 ## Project Structure
 ├── dataset_loader.py      # Data loading & preprocessing
@@ -48,10 +85,13 @@ print(qa.predict_span('Trường DH KHTN thành lập năm 2006.', 'Trường th
 ├── train_phobert_full.py  # Full training with ROCm support
 ├── baseline_model.py      # TF-IDF baseline
 ├── eval_metrics.py        # EM/F1 evaluation
+├── confusion_matrix.py    # Confusion matrix generator
 ├── app_streamlit.py       # Web demo interface
 ├── train_colab.ipynb      # Google Colab training notebook
 ├── test_rocm_amd.py       # AMD GPU compatibility tests
-└── error_analysis.md      # Error analysis report
+├── error_analysis.md      # Error analysis report
+├── requirements.txt       # Python dependencies
+└── visualizations/        # Output charts and matrices
 
 ## Features
 - PhoBERT transformer fine-tuned on Vietnamese QA

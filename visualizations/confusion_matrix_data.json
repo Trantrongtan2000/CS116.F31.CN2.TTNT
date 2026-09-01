@@ -1,0 +1,38 @@
+{
+  "matrix": [
+    [
+      3,
+      92,
+      318
+    ],
+    [
+      0,
+      0,
+      62
+    ],
+    [
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      8,
+      17
+    ]
+  ],
+  "row_categories": [
+    "Standard",
+    "Ambiguous",
+    "Context Length",
+    "Multi-hop"
+  ],
+  "col_categories": [
+    "Correct",
+    "Word Boundary",
+    "Wrong"
+  ],
+  "total_samples": 500,
+  "correct": 3,
+  "avg_f1": 0.23102
+}
