@@ -54,11 +54,11 @@ print(qa.predict_span('Trường DH KHTN thành lập năm 2006.', 'Trường th
 └── error_analysis.md      # Error analysis report
 
 ## Features
-✅ PhoBERT transformer fine-tuned on Vietnamese QA  
-✅ TF-IDF baseline comparison  
-✅ AMD ROCm & NVIDIA CUDA compatible  
-✅ Error analysis with 150+ misclassified cases  
-✅ Interactive web demo  
+- PhoBERT transformer fine-tuned on Vietnamese QA
+- TF-IDF baseline comparison
+- AMD ROCm & NVIDIA CUDA compatible
+- Error analysis with 150+ misclassified cases
+- Interactive web demo
 
 ## GPU Support
 - **AMD RX 6700 XT**: Full ROCm support
