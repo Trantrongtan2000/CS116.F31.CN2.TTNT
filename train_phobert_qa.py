@@ -18,11 +18,22 @@ import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 
+def _detect_device():
+    """Detect available device: CUDA (NVIDIA), ROCm (AMD HIP), or CPU."""
+    if torch.cuda.is_available():
+        device_name = torch.cuda.get_device_name(0) if torch.cuda.device_count() > 0 else "GPU"
+        is_rocm = any(k in device_name.lower() for k in ["amd", "radeon", "gfx", "rx "])
+        return torch.device("cuda:0"), True, is_rocm, device_name
+    return torch.device("cpu"), False, False, "CPU"
+
+
 class VietnameseQAModel:
     def __init__(self, model_name="vinai/phobert-base-v2"):
         self.model_name = model_name
-        self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+        self.device, self.is_gpu, self.is_rocm, self.gpu_name = _detect_device()
         print(f"[INFO] Initializing Vietnamese QA Engine with {model_name} on {self.device}...")
+        if self.is_rocm:
+            print(f"[INFO] ROCm (AMD) detected: {self.gpu_name}")
         try:
             self.tokenizer = AutoTokenizer.from_pretrained(model_name)
             self.model = AutoModelForQuestionAnswering.from_pretrained(model_name).to(self.device)
@@ -82,8 +93,8 @@ def train_phobert_qa(train_data_path="viquad_sample.json",
     full_data = load_or_create_viquad(train_data_path)
     train_data, val_data, test_data = split_dataset_by_context(full_data)
     
-    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-    print(f"[INFO] Using device: {device}")
+    device, is_gpu, is_rocm, gpu_name = _detect_device()
+    print(f"[INFO] Using device: {device} ({gpu_name})")
     
     tokenizer = AutoTokenizer.from_pretrained(model_name)
     model = AutoModelForQuestionAnswering.from_pretrained(model_name)
@@ -111,9 +122,10 @@ def train_phobert_qa(train_data_path="viquad_sample.json",
         logging_steps=50,
         save_strategy="epoch",
         report_to="none",
-        fp16=torch.cuda.is_available(),
+        fp16=is_gpu,  # Works on both CUDA and ROCm
+        bf16=False,   # AMD ROCm doesn't support BF16 on RDNA2
         dataloader_num_workers=2,
-        pin_memory=True if torch.cuda.is_available() else False,
+        pin_memory=True if is_gpu else False,
     )
     
     print("[INFO] Training configuration:")

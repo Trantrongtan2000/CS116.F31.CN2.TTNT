@@ -1,0 +1,65 @@
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+[INFO] Device: cpu
+[INFO] GPU available: False
+[INFO] Use full dataset: False
+[INFO] CPU mode: using subset of 5000 train, 500 val/test
+======================================================================
+PhoBERT QA Training on UIT-ViQuAD 2.0
+======================================================================
+
+[STEP 1] Loading tokenizer...
+[INFO] Tokenizer loaded: vinai/phobert-base-v2
+[INFO] Vocab size: 64000
+[INFO] Full dataset - Train: 28454, Val: 2854, Test: 4407
+
+[STEP 2] Loading and preprocessing datasets...
+[INFO] Tokenizing train dataset...
+[INFO] Loading dataset from /home/tan/04_Studies_Knowledge/UIT_Studies/Các môn học kỳ 3/00_DO_AN_TONG_HOP/01_CS116_DoAn_T11_MRC/viquad2_deduped_train.json...
+[INFO] Loaded 5000 QA examples
+[INFO] Tokenizing 5000 examples...
+Map:   0%|          | 0/5000 [00:00<?, ? examples/s]Map:   2%|▏         | 100/5000 [00:00<00:05, 959.57 examples/s]Map:   4%|▍         | 200/5000 [00:00<00:05, 884.89 examples/s]Map:   8%|▊         | 400/5000 [00:00<00:04, 1004.41 examples/s]Map:  12%|█▏        | 600/5000 [00:00<00:04, 1045.71 examples/s]Map:  16%|█▌        | 800/5000 [00:00<00:04, 1039.87 examples/s]Map:  20%|██        | 1000/5000 [00:00<00:03, 1067.48 examples/s]Map:  24%|██▍       | 1200/5000 [00:01<00:03, 1107.38 examples/s]Map:  28%|██▊       | 1400/5000 [00:01<00:03, 1137.78 examples/s]Map:  32%|███▏      | 1600/5000 [00:01<00:03, 1131.79 examples/s]Map:  36%|███▌      | 1800/5000 [00:01<00:02, 1133.42 examples/s]Map:  40%|████      | 2000/5000 [00:01<00:02, 1149.67 examples/s]Map:  44%|████▍     | 2200/5000 [00:01<00:02, 1172.54 examples/s]Map:  48%|████▊     | 2400/5000 [00:02<00:02, 1179.18 examples/s]Map:  52%|█████▏    | 2600/5000 [00:02<00:02, 1054.11 examples/s]Map:  56%|█████▌    | 2800/5000 [00:02<00:02, 1083.16 examples/s]Map:  60%|██████    | 3000/5000 [00:02<00:01, 1100.68 examples/s]Map:  64%|██████▍   | 3200/5000 [00:02<00:01, 1117.66 examples/s]Map:  68%|██████▊   | 3400/5000 [00:03<00:01, 1141.20 examples/s]Map:  72%|███████▏  | 3600/5000 [00:03<00:01, 1103.93 examples/s]Map:  76%|███████▌  | 3800/5000 [00:03<00:01, 1096.15 examples/s]Map:  80%|████████  | 4000/5000 [00:03<00:00, 1065.63 examples/s]Map:  84%|████████▍ | 4200/5000 [00:03<00:00, 1068.96 examples/s]Map:  88%|████████▊ | 4400/5000 [00:04<00:00, 1094.41 examples/s]Map:  92%|█████████▏| 4600/5000 [00:04<00:00, 1113.20 examples/s]Map:  96%|█████████▌| 4800/5000 [00:04<00:00, 1177.63 examples/s]Map: 100%|██████████| 5000/5000 [00:04<00:00, 1154.08 examples/s]Map: 100%|██████████| 5000/5000 [00:04<00:00, 1108.14 examples/s]
+[INFO] Train dataset: 5000 features
+[INFO] Tokenizing validation dataset...
+[INFO] Loading dataset from /home/tan/04_Studies_Knowledge/UIT_Studies/Các môn học kỳ 3/00_DO_AN_TONG_HOP/01_CS116_DoAn_T11_MRC/viquad2_deduped_validation.json...
+[INFO] Loaded 500 QA examples
+[INFO] Tokenizing 500 examples...
+Map:   0%|          | 0/500 [00:00<?, ? examples/s]Map:  40%|████      | 200/500 [00:00<00:00, 1248.72 examples/s]Map:  80%|████████  | 400/500 [00:00<00:00, 1267.40 examples/s]Map: 100%|██████████| 500/500 [00:00<00:00, 1254.98 examples/s]
+[INFO] Validation dataset: 500 features
+[INFO] Tokenizing test dataset...
+[INFO] Loading dataset from /home/tan/04_Studies_Knowledge/UIT_Studies/Các môn học kỳ 3/00_DO_AN_TONG_HOP/01_CS116_DoAn_T11_MRC/viquad2_deduped_test.json...
+[INFO] Loaded 500 QA examples
+[INFO] Tokenizing 500 examples...
+Map:   0%|          | 0/500 [00:00<?, ? examples/s]Map:  40%|████      | 200/500 [00:00<00:00, 1324.17 examples/s]Map:  80%|████████  | 400/500 [00:00<00:00, 1216.76 examples/s]Map: 100%|██████████| 500/500 [00:00<00:00, 1305.13 examples/s]
+[INFO] Test dataset: 500 features
+
+[STEP 3] Loading PhoBERT model...
+Loading weights:   0%|          | 0/197 [00:00<?, ?it/s]Loading weights: 100%|██████████| 197/197 [00:00<00:00, 63993.02it/s]
+[transformers] [1mRobertaForQuestionAnswering LOAD REPORT[0m from: vinai/phobert-base-v2
+Key                       | Status     | 
+--------------------------+------------+-
+lm_head.layer_norm.bias   | UNEXPECTED | 
+lm_head.bias              | UNEXPECTED | 
+lm_head.dense.weight      | UNEXPECTED | 
+lm_head.layer_norm.weight | UNEXPECTED | 
+lm_head.dense.bias        | UNEXPECTED | 
+qa_outputs.weight         | MISSING    | 
+qa_outputs.bias           | MISSING    | 
+
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+- MISSING:	those params were newly initialized because missing from the checkpoint. Consider training on your downstream task.
+[INFO] Model loaded: vinai/phobert-base-v2
+[INFO] Trainable parameters: 134,409,218
+
+[STEP 4] Setting up training configuration...
+Traceback (most recent call last):
+  File "/home/tan/04_Studies_Knowledge/UIT_Studies/Các môn học kỳ 3/00_DO_AN_TONG_HOP/01_CS116_DoAn_T11_MRC/train_phobert_full.py", line 700, in <module>
+    main()
+    ~~~~^^
+  File "/home/tan/04_Studies_Knowledge/UIT_Studies/Các môn học kỳ 3/00_DO_AN_TONG_HOP/01_CS116_DoAn_T11_MRC/train_phobert_full.py", line 512, in main
+    training_args = TrainingArguments(
+        output_dir=OUTPUT_DIR,
+    ...<16 lines>...
+        remove_unused_columns=False,
+    )
+TypeError: TrainingArguments.__init__() got an unexpected keyword argument 'pin_memory'
