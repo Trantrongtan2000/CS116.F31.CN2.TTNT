@@ -1,0 +1,45 @@
+{
+  "dataset_id": "taidng/UIT-ViQuAD2.0",
+  "splits": {
+    "train": {
+      "num_examples": 28454,
+      "features": [
+        "id",
+        "uit_id",
+        "title",
+        "context",
+        "question",
+        "answers",
+        "is_impossible",
+        "plausible_answers"
+      ]
+    },
+    "validation": {
+      "num_examples": 3814,
+      "features": [
+        "id",
+        "uit_id",
+        "title",
+        "context",
+        "question",
+        "answers",
+        "is_impossible",
+        "plausible_answers"
+      ]
+    },
+    "test": {
+      "num_examples": 7301,
+      "features": [
+        "id",
+        "uit_id",
+        "title",
+        "context",
+        "question",
+        "answers",
+        "is_impossible",
+        "plausible_answers"
+      ]
+    }
+  },
+  "total_examples": 39569
+}

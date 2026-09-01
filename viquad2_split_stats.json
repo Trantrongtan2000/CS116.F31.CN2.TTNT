@@ -1,0 +1,23 @@
+{
+  "splits": {
+    "train": {
+      "num_contexts": 138,
+      "num_questions": 28454,
+      "num_impossible": 9216,
+      "impossible_pct": 32.39
+    },
+    "validation": {
+      "num_contexts": 19,
+      "num_questions": 3814,
+      "num_impossible": 1161,
+      "impossible_pct": 30.44
+    },
+    "test": {
+      "num_contexts": 48,
+      "num_questions": 7301,
+      "num_impossible": 0,
+      "impossible_pct": 0.0
+    }
+  },
+  "total_questions": 39569
+}

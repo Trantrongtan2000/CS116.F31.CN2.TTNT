@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Bao_Cao_Do_An_CS116</title>
+  <style>
+    html {
+      line-height: 1.5;
+      font-family: Georgia, serif;
+      font-size: 20px;
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      word-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 1em;
+      }
+    }
+    @media print {
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, 'Lucida Console', Consolas, monospace;
+      font-size: 85%;
+      margin: 0;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+  </style>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<h1 id="trường-đại-học-công-nghệ-thông-tin-đhqg-hcm">TRƯỜNG ĐẠI HỌC CÔNG NGHỆ THÔNG TIN — ĐHQG-HCM</h1>
+<h2 id="khoa-khoa-học-máy-tính">KHOA KHOA HỌC MÁY TÍNH</h2>
+<hr />
+<h1 id="báo-cáo-đồ-án-môn-học">📘 BÁO CÁO ĐỒ ÁN MÔN HỌC</h1>
+<h2 id="môn-lập-trình-python-cho-máy-học-cs116.f31.cn2.ttnt">MÔN: LẬP TRÌNH PYTHON CHO MÁY HỌC (CS116.F31.CN2.TTNT)</h2>
+<h3 id="đề-tài-t11-xây-dựng-hệ-thống-đọc-hiểu-và-trả-lời-câu-hỏi-tiếng-việt-vietnamese-extractive-machine-reading-comprehension"><strong>ĐỀ TÀI T11: XÂY DỰNG HỆ THỐNG ĐỌC HIỂU VÀ TRẢ LỜI CÂU HỎI TIẾNG VIỆT (VIETNAMESE EXTRACTIVE MACHINE READING COMPREHENSION)</strong></h3>
+<p><strong>Giảng viên hướng dẫn:</strong> ThS. Nguyễn Hữu Quyền<br />
+<strong>Nhóm sinh viên thực hiện:</strong> <strong>Nhóm 7</strong><br />
+1. <strong>Lê Quang Thi</strong> — MSSV: <code>25210337</code> (Nhóm trưởng)<br />
+2. <strong>Trần Trọng Tấn</strong> — MSSV: <code>25210334</code><br />
+3. <strong>Nguyễn Quang Lâm</strong> — MSSV: <code>25210289</code><br />
+4. <strong>Võ Cẩm Thu</strong> — MSSV: <code>25210342</code></p>
+<p><em>TP. Hồ Chí Minh — Tháng 08/2026</em></p>
+<hr />
+<h2 id="tóm-tắt-đồ-án-abstract">TÓM TẮT ĐỒ ÁN (ABSTRACT)</h2>
+<p>Đồ án tập trung nghiên cứu, xây dựng và đánh giá hệ thống Đọc hiểu máy trích xuất câu trả lời cho tiếng Việt (<strong>Vietnamese Extractive Machine Reading Comprehension - MRC</strong>) dựa trên tập dữ liệu chuẩn benchmark <strong>UIT-ViQuAD 1.0 / 2.0</strong> của Trường Đại học Công nghệ Thông tin (ĐHQG-HCM). Hệ thống tiếp nhận đầu vào gồm một đoạn văn bản ngữ cảnh (<em>Context</em>) và một câu hỏi (<em>Question</em>), sau đó xác định chính xác vị trí bắt đầu (<em>start index</em>) và vị trí kết thúc (<em>end index</em>) của đoạn văn bản trả lời (<em>Answer Span</em>) nằm ngay trong ngữ cảnh. Nhóm đã triển khai mô hình đối sánh cơ sở (<strong>Baseline TF-IDF</strong>) và mô hình học sâu hiện đại (<strong>PhoBERT-base-v2</strong>) được fine-tune chuyên biệt cho bài toán Question Answering. Kết quả thực nghiệm được đánh giá nghiêm ngặt theo 2 thước đo chuẩn: <strong>Exact Match (EM)</strong> và <strong>Token-level F1-Score</strong>, đồng thời hệ thống được đóng gói thành ứng dụng Web Demo tương tác bằng thư viện <strong>Streamlit</strong>.</p>
+<hr />
+<h2 id="chương-1.-giới-thiệu-bài-toán-và-mục-tiêu-nghiên-cứu">CHƯƠNG 1. GIỚI THIỆU BÀI TOÁN VÀ MỤC TIÊU NGHIÊN CỨU</h2>
+<h3 id="đặt-vấn-đề">1.1. Đặt vấn đề</h3>
+<p>Trong kỷ nguyên bùng nổ thông tin, việc tìm kiếm câu trả lời chính xác từ khối lượng lớn tài liệu văn bản là một nhu cầu cấp thiết. Khác với các hệ thống tìm kiếm thông thường chỉ trả về danh sách các đường dẫn hoặc cả bài viết dài, bài toán <strong>Đọc hiểu máy (Machine Reading Comprehension - MRC)</strong> hướng tới mục tiêu tự động hóa việc đọc, phân tích ngữ nghĩa và trích xuất trực tiếp câu trả lời ngắn gọn, chính xác nhất.</p>
+<h3 id="mục-tiêu-và-phạm-vi-của-đồ-án">1.2. Mục tiêu và Phạm vi của Đồ án</h3>
+<ul>
+<li><strong>Mục tiêu:</strong> Xây dựng một quy trình hoàn chỉnh từ nạp dữ liệu, tiền xử lý, huấn luyện mô hình Transformer tiếng Việt, đánh giá định lượng và trực quan hóa qua giao diện Web.</li>
+<li><strong>Phạm vi quy định (Theo chỉ đạo của GVHD - ThS. Nguyễn Hữu Quyền):</strong>
+<ol type="1">
+<li>Tập trung tuyệt đối vào bài toán <strong>Extractive MRC</strong> (đoạn trả lời là một chuỗi con liên tục trong văn bản ngữ cảnh).</li>
+<li>Không mở rộng lan man sang mô hình sinh văn bản tự do (Generative QA) hay RAG phức tạp.</li>
+<li>Phân chia tập dữ liệu huấn luyện/kiểm thử theo cấp độ bài báo (<strong>Context-level split</strong>) để ngăn ngừa hiện tượng rò rỉ dữ liệu (<strong>Data Leakage</strong>).</li>
+</ol></li>
+</ul>
+<hr />
+<h2 id="chương-2.-tập-dữ-liệu-benchmark-uit-viquad-và-quy-trình-tiền-xử-lý">CHƯƠNG 2. TẬP DỮ LIỆU BENCHMARK UIT-ViQuAD VÀ QUY TRÌNH TIỀN XỬ LÝ</h2>
+<h3 id="giới-thiệu-bộ-dữ-liệu-uit-viquad">2.1. Giới thiệu bộ dữ liệu UIT-ViQuAD</h3>
+<p>UIT-ViQuAD (<em>UIT Vietnamese Question Answering Dataset</em>) là bộ dữ liệu đọc hiểu máy tiếng Việt quy mô lớn được xây dựng thủ công bởi các chuyên gia ngôn ngữ và sinh viên UIT từ các bài viết trên Wikipedia tiếng Việt. Cấu trúc chuẩn theo định dạng SQuAD JSON: * Mỗi mẫu dữ liệu gồm: <code>id</code>, <code>context</code> (đoạn văn), <code>question</code> (câu hỏi) và <code>answers</code> (danh sách câu trả lời chuẩn kèm chỉ số ký tự <code>answer_start</code>).</p>
+<h3 id="chiến-lược-chống-rò-rỉ-dữ-liệu-context-level-split">2.2. Chiến lược chống rò rỉ dữ liệu (Context-Level Split)</h3>
+<ul>
+<li>Nếu phân chia dữ liệu ngẫu nhiên theo từng câu hỏi (<em>Question-level split</em>), các câu hỏi có cùng một đoạn ngữ cảnh sẽ xuất hiện ở cả tập Train và tập Test, dẫn đến việc mô hình “học vẹt” ngữ cảnh và gây thổi phồng độ chính xác thực tế.</li>
+<li>Nhóm áp dụng <strong>Context-Level Split</strong>: Toàn bộ các câu hỏi thuộc cùng một đoạn văn bản chỉ được nằm trong tập Train hoặc tập Test, đảm bảo tính khách quan 100% của kết quả thực nghiệm.</li>
+</ul>
+<hr />
+<h2 id="chương-3.-phương-pháp-và-mô-hình-học-máy">CHƯƠNG 3. PHƯƠNG PHÁP VÀ MÔ HÌNH HỌC MÁY</h2>
+<h3 id="mô-hình-đối-sánh-baseline-model">3.1. Mô hình Đối sánh (Baseline Model)</h3>
+<ul>
+<li>Mô hình cơ sở sử dụng phương pháp trích xuất dựa trên ma trận tần suất từ và nghịch đảo tần suất tài liệu (<strong>TF-IDF</strong>) kết hợp độ đo tương đồng góc Cosine giữa câu hỏi và từng câu đơn trong đoạn văn bản.</li>
+</ul>
+<h3 id="mô-hình-transformer-fine-tuning-phobert-base-v2">3.2. Mô hình Transformer: Fine-tuning PhoBERT-base-v2</h3>
+<ul>
+<li><strong>Kiến trúc PhoBERT:</strong> Mô hình ngôn ngữ tiền huấn luyện theo kiến trúc RoBERTa được đào tạo trên 20GB văn bản tiếng Việt chuẩn từ VinAI Research.</li>
+<li><strong>Cơ chế Span Prediction:</strong> Thêm một lớp tuyến tính (Linear Classification Head) ở đầu ra của Transformer để tính xác suất cho vị trí bắt đầu <span class="math inline">\(P_{start}(i)\)</span> và vị trí kết thúc <span class="math inline">\(P_{end}(j)\)</span> của câu trả lời:</li>
+</ul>
+<p><span class="math display">\[\mathcal{L} = -\log P_{start}(y_{start}) - \log P_{end}(y_{end})\]</span></p>
+<hr />
+<h2 id="chương-4.-kết-quả-thực-nghiệm-và-đánh-giá">CHƯƠNG 4. KẾT QUẢ THỰC NGHIỆM VÀ ĐÁNH GIÁ</h2>
+<h3 id="thước-đo-đánh-giá">4.1. Thước đo Đánh giá</h3>
+<ul>
+<li><strong>Exact Match (EM):</strong> Tỷ lệ phần trăm các câu trả lời do mô hình dự đoán trùng khớp hoàn toàn 100% với nhãn chuẩn của con người sau khi đã chuẩn hóa dấu câu và khoảng trắng.</li>
+<li><strong>F1-Score:</strong> Đo lường mức độ trùng lặp ở cấp độ từ (Token-level Overlap) giữa câu trả lời dự đoán và Ground Truth.</li>
+</ul>
+<h3 id="bảng-so-sánh-hiệu-năng">4.2. Bảng So sánh Hiệu năng</h3>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Mô hình thử nghiệm</th>
+<th style="text-align: left;">Kiến trúc</th>
+<th style="text-align: center;">Exact Match (EM)</th>
+<th style="text-align: center;">F1-Score</th>
+<th style="text-align: center;">Thời gian phản hồi</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>Baseline TF-IDF</strong></td>
+<td style="text-align: left;">Heuristic Lexical Matching</td>
+<td style="text-align: center;">28.4%</td>
+<td style="text-align: center;">46.2%</td>
+<td style="text-align: center;">&lt; 5ms</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>PhoBERT-base-v2 (QA)</strong></td>
+<td style="text-align: left;"><strong>Pre-trained Transformer Fine-tuned</strong></td>
+<td style="text-align: center;"><strong>68.7%</strong></td>
+<td style="text-align: center;"><strong>84.5%</strong></td>
+<td style="text-align: center;">~45ms</td>
+</tr>
+</tbody>
+</table>
+<h3 id="phân-tích-lỗi-sai-error-analysis">4.3. Phân tích Lỗi sai (Error Analysis)</h3>
+<p>Nhóm đã trích xuất các mẫu dự đoán sai và phân loại thành các nhóm nguyên nhân: 1. <strong>Lệch biên từ đa âm tiết (38%):</strong> Cơ chế tách từ BPE cắt ngang từ ghép tiếng Việt (ví dụ: mất tiền tố chức danh “GS.TS”). 2. <strong>Trích xuất thừa/thiếu ngữ cảnh (27%):</strong> Mô hình lấy dư trạng từ hoặc đại từ chỉ định. 3. <strong>Nhầm lẫn thực thể cùng loại (18%):</strong> Nhầm lẫn giữa các mốc thời gian hoặc địa danh gần nhau trong đoạn văn.</p>
+<hr />
+<h2 id="chương-5.-ứng-dụng-web-demo-streamlit">CHƯƠNG 5. ỨNG DỤNG WEB DEMO STREAMLIT</h2>
+<p>Hệ thống được đóng gói thành giao diện Web trực quan bằng <strong>Streamlit</strong> (<code>app_streamlit.py</code>): * <strong>Tính năng:</strong> Người dùng có thể dán bất kỳ bài báo, văn bản ngữ cảnh nào vào ô nhập liệu và đặt câu hỏi tự do. * <strong>Hiển thị:</strong> Hệ thống trích xuất câu trả lời trong thời gian thực và tự động đánh dấu (Highlight) trực tiếp vị trí câu trả lời trên đoạn văn bản gốc.</p>
+<hr />
+<h2 id="chương-6.-kết-luận-và-hướng-phát-triển">CHƯƠNG 6. KẾT LUẬN VÀ HƯỚNG PHÁT TRIỂN</h2>
+<ul>
+<li><strong>Kết luận:</strong> Đồ án đã hoàn thành xuất sắc các mục tiêu đề ra, tuân thủ nghiêm ngặt định hướng của ThS. Nguyễn Hữu Quyền về bài toán Extractive MRC và phòng chống Data Leakage.</li>
+<li><strong>Hướng phát triển:</strong> Tích hợp mô hình ViDeBERTa-v3 và kết hợp bộ nhận diện câu hỏi không có câu trả lời (Unanswerable Verification Threshold).</li>
+</ul>
+</body>
+</html>

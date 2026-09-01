@@ -1,0 +1,60 @@
+{
+  "version": "1.0",
+  "data": [
+    {
+      "title": "Trường Đại học Công nghệ Thông tin - ĐHQG-HCM",
+      "paragraphs": [
+        {
+          "context": "Trường Đại học Công nghệ Thông tin là một trường đại học thành viên của Đại học Quốc gia Thành phố Hồ Chí Minh, được thành lập theo Quyết định số 134/2006/QĐ-TTg ngày 8 tháng 6 năm 2006 của Thủ tướng Chính phủ. Trường có nhiệm vụ đào tạo nguồn nhân lực công nghệ thông tin chất lượng cao, đóng góp tích cực vào sự phát triển của nền công nghiệp công nghệ thông tin Việt Nam.",
+          "qas": [
+            {
+              "id": "uit_001",
+              "question": "Trường Đại học Công nghệ Thông tin được thành lập vào ngày tháng năm nào?",
+              "answers": [
+                {
+                  "text": "ngày 8 tháng 6 năm 2006",
+                  "answer_start": 140
+                }
+              ]
+            },
+            {
+              "id": "uit_002",
+              "question": "Trường Đại học Công nghệ Thông tin là thành viên của hệ thống đại học nào?",
+              "answers": [
+                {
+                  "text": "Đại học Quốc gia Thành phố Hồ Chí Minh",
+                  "answer_start": 71
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "context": "Trí tuệ nhân tạo là một ngành thuộc lĩnh vực khoa học máy tính nhằm tạo ra những hệ thống hoặc máy móc có khả năng mô phỏng các quá trình trí tuệ của con người. Các quá trình này bao gồm việc học tập, lập luận, tự sửa lỗi và xử lý ngôn ngữ tự nhiên.",
+          "qas": [
+            {
+              "id": "ai_001",
+              "question": "Trí tuệ nhân tạo là ngành thuộc lĩnh vực nào?",
+              "answers": [
+                {
+                  "text": "khoa học máy tính",
+                  "answer_start": 44
+                }
+              ]
+            },
+            {
+              "id": "ai_002",
+              "question": "Các quá trình trí tuệ được mô phỏng bao gồm những gì?",
+              "answers": [
+                {
+                  "text": "học tập, lập luận, tự sửa lỗi và xử lý ngôn ngữ tự nhiên",
+                  "answer_start": 190
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

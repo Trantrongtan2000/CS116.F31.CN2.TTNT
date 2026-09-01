@@ -1,0 +1,30 @@
+{
+  "raw": {
+    "train": {
+      "qas": 28454,
+      "contexts": 4101
+    },
+    "validation": {
+      "qas": 3814,
+      "contexts": 557
+    },
+    "test": {
+      "qas": 7301,
+      "contexts": 1241
+    }
+  },
+  "deduplicated": {
+    "train": {
+      "qas": 28454,
+      "contexts": 4101
+    },
+    "validation": {
+      "qas": 2854,
+      "contexts": 424
+    },
+    "test": {
+      "qas": 4407,
+      "contexts": 659
+    }
+  }
+}
