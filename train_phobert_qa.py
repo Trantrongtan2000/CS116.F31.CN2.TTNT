@@ -2,7 +2,11 @@
 """
 Transformer Question Answering Pipeline for Vietnamese (PhoBERT / ViDeBERTa)
 Course: CS116 - Do an T11 (He thong doc hieu va tra loi cau hoi tieng Viet)
-Author: Nhom 7 (Le Quang Thi, Tran Trong Tan, Nguyen Quang Lam, Vo Cam Thu)
+Author: Team 7 - Vietnamese MRC
+  - Tran Trong Tan (25210334)
+  - Le Quang Thi (25210337)
+  - Vo Cam Thu (25210342)
+  - Nguyen Quang Lam (25210289)
 """
 import os
 import torch
