@@ -1,0 +1,13 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Model weights / HF cache (downloaded, not committed)
+models/
+*.safetensors
+*.bin
+
+# NOTE: results/ and visualizations/ ARE committed on purpose — they are the
+# evidence that the reported metrics came from real runs.
