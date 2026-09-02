@@ -11,3 +11,7 @@ models/
 
 # NOTE: results/ and visualizations/ ARE committed on purpose — they are the
 # evidence that the reported metrics came from real runs.
+
+# OMC internal session state (keep specs, ignore runtime state)
+.omc/state/
+.omc/logs/
