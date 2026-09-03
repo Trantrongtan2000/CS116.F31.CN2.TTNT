@@ -1,0 +1,347 @@
+{
+  "dataset": "UIT-ViQuAD 2.0 (deduplicated)",
+  "split": "validation",
+  "num_questions": 400,
+  "num_impossible": 115,
+  "models": {
+    "TF-IDF Baseline": {
+      "overall": {
+        "EM": 0.75,
+        "F1": 23.954901168546193,
+        "count": 400
+      },
+      "avg_latency_ms": 0.6,
+      "by_context_length": {
+        "<100": {
+          "EM": 0.0,
+          "F1": 28.104575163398696,
+          "count": 3
+        },
+        "100-200": {
+          "EM": 0.9404388714733543,
+          "F1": 23.879449068725418,
+          "count": 319
+        },
+        "200-300": {
+          "EM": 0.0,
+          "F1": 24.991178513184156,
+          "count": 57
+        },
+        "300+": {
+          "EM": 0.0,
+          "F1": 21.695491131113286,
+          "count": 21
+        }
+      },
+      "by_question_type": {
+        "multi-sentence": {
+          "EM": 2.2058823529411766,
+          "F1": 30.718373160910875,
+          "count": 136
+        },
+        "single-sentence": {
+          "EM": 0.0,
+          "F1": 36.27021286935974,
+          "count": 149
+        }
+      },
+      "sample_predictions": [
+        {
+          "question": "Paris đạt được thành quả gì sau khoảng 4 thế kỷ tính từ ngày Cách mạng Pháp diễn ra?",
+          "gold": [
+            "trở thành một trong những trung tâm văn hóa của thế giới, thủ đô của nghệ thuật và giải trí"
+          ],
+          "prediction": "Thế kỷ 14, Paris là thành phố quan trọng bậc nhất của Cơ Đốc giáo và trong các thế kỷ 16, 17, đây là nơi diễn ra Cách mạng Pháp cùng nhiều sự kiện lịch sử quan trọng của Pháp và châu Âu.",
+          "context_length": 147,
+          "question_type": "multi-sentence"
+        },
+        {
+          "question": "Cuộc cách mạng Pháp diễn ra ở đâu?",
+          "gold": [
+            "Paris"
+          ],
+          "prediction": "Thế kỷ 14, Paris là thành phố quan trọng bậc nhất của Cơ Đốc giáo và trong các thế kỷ 16, 17, đây là nơi diễn ra Cách mạng Pháp cùng nhiều sự kiện lịch sử quan trọng của Pháp và châu Âu.",
+          "context_length": 147,
+          "question_type": "single-sentence"
+        },
+        {
+          "question": "Kinh đô ánh sáng nổi tiếng về lĩnh vực gì?",
+          "gold": [
+            "nghệ thuật và giải trí"
+          ],
+          "prediction": "Từ thế kỷ 12, Paris trở thành một trong những trung tâm của châu Âu về giáo dục và nghệ thuật.",
+          "context_length": 147,
+          "question_type": "multi-sentence"
+        },
+        {
+          "question": "Điều gì đã nói lên Paris là thành phố lý tưởng để khách du lịch?",
+          "gold": [
+            "Kinh đô ánh sáng"
+          ],
+          "prediction": "Nổi tiếng với tên gọi Kinh đô ánh sáng, Paris là một trung tâm văn hóa lớn của thế giới và cũng là một trong những thành phố du lịch thu hút nhất.",
+          "context_length": 152,
+          "question_type": "multi-sentence"
+        },
+        {
+          "question": "Điều gì đã nói lên New York là thành phố lý tưởng để khách du lịch?",
+          "gold": [],
+          "prediction": "cộng với những hoạt động đa dạng về tài chính, kinh doanh, chính trị và du lịch đã khiến Paris trở thành một trong những trung tâm trung chuyển lớn nhất trên thế giới và được coi như một trong bốn \"thành phố toàn cầu\" cùng với New York, Luân Đôn và Tokyo.",
+          "context_length": 152,
+          "question_type": null
+        },
+        {
+          "question": "Kinh đô ánh sáng nổi tiếng như thế nào trong lĩnh vực thời trang mua sắm?",
+          "gold": [
+            "Thành phố còn được xem như kinh đô của thời trang cao cấp với nhiều khu phố xa xỉ cùng các trung tâm thương mại lớn"
+          ],
+          "prediction": "Nổi tiếng với tên gọi Kinh đô ánh sáng, Paris là một trung tâm văn hóa lớn của thế giới và cũng là một trong những thành phố du lịch thu hút nhất.",
+          "context_length": 152,
+          "question_type": "multi-sentence"
+        },
+        {
+          "question": "Tên gọi Pháp bắt nguồn từ sự việc gì?",
+          "gold": [],
+          "prediction": "Paris nổi tiếng với tên gọi \"Kinh đô ánh sáng\", vốn từ trong tiếng Pháp là \"Ville lumière\", dịch chính xác là Thành phố ánh sáng, cũng giống trong tiếng Anh: The City of Lights.",
+          "context_length": 106,
+          "question_type": null
+        },
+        {
+          "question": "Năm 1844, ngoại ô và nội ô Paris được sát nhập bằng gì?",
+          "gold": [],
+          "prediction": "Vào năm 1844, nội ô Paris (Paris intra-muros) được giới hạn bởi bức tường thành Thiers.",
+          "context_length": 106,
+          "question_type": null
+        },
+        {
+          "question": "Rừng Vincennes nằm ở đâu của Paris?",
+          "gold": [
+            "Quận 12 ở phía Đông"
+          ],
+          "prediction": "Còn rừng Vincennes rộng 995 hecta thuộc Quận 12 ở phía Đông.",
+          "context_length": 106,
+          "question_type": "multi-sentence"
+        },
+        {
+          "question": "Thời điểm nào nhiệt độ Paris đạt mức cao nhất?",
+          "gold": [
+            "ngày 28 tháng 6 năm 1948"
+          ],
+          "prediction": "Nhiệt độ cao nhất ghi được tại đây là vào ngày 28 tháng 6 năm 1948, lên đến 40,4 °C.",
+          "context_length": 143,
+          "question_type": "multi-sentence"
+        },
+        {
+          "question": "Paris trở thành nơi thịnh vượng nhất châu Âu vào thời kì nào?",
+          "gold": [
+            "thế kỷ 17"
+          ],
+          "prediction": "Sau Công xã Paris, thành phố bước vào thời kỳ Belle Époque và trở thành trung tâm văn hóa của cả châu Âu.",
+          "context_length": 191,
+          "question_type": "multi-sentence"
+        },
+        {
+          "question": "Châu Âu trở thành nơi thịnh vượng nhất Paris vào thời kì nào?",
+          "gold": [],
+          "prediction": "Sau Công xã Paris, thành phố bước vào thời kỳ Belle Époque và trở thành trung tâm văn hóa của cả châu Âu.",
+          "context_length": 191,
+          "question_type": null
+        },
+        {
+          "question": "Ai đã mang  Kito giáo vào Paris?",
+          "gold": [
+            "Thánh Denis"
+          ],
+          "prediction": "Theo truyền thuyết thì Thánh Denis, người tử vì đạo khoảng năm 250, đã truyền Cơ Đốc giáo vào thành phố.",
+          "context_length": 165,
+          "question_type": "multi-sentence"
+        },
+        {
+          "question": "Ai đã cai trị Attila sau khi giải phóng khỏi Paris?",
+          "gold": [],
+          "prediction": "Thời kỳ Trung Cổ, thành phố thoát khỏi sự cai trị của những người Attila trong một thời gian ngắn rồi Childéric I tới chiếm vào năm 464.",
+          "context_length": 149,
+          "question_type": null
+        },
+        {
+          "question": "Những chiến binh Viking đã tấn công Paris lần đầu vào lúc nào?",
+          "gold": [
+            "Năm 845"
+          ],
+          "prediction": "Năm 845, những người Viking tới đánh Paris lần đầu tiên, dân chúng phải rời bỏ thành phố.",
+          "context_length": 149,
+          "question_type": "multi-sentence"
+        }
+      ]
+    },
+    "Transformer (xlm-roberta-base-squad2)": {
+      "overall": {
+        "EM": 40.75,
+        "F1": 56.53238668998622,
+        "count": 400
+      },
+      "avg_latency_ms": 85.9,
+      "by_context_length": {
+        "<100": {
+          "EM": 66.66666666666667,
+          "F1": 66.66666666666667,
+          "count": 3
+        },
+        "100-200": {
+          "EM": 42.31974921630094,
+          "F1": 58.0299344894495,
+          "count": 319
+        },
+        "200-300": {
+          "EM": 36.8421052631579,
+          "F1": 51.44227256119839,
+          "count": 57
+        },
+        "300+": {
+          "EM": 23.80952380952381,
+          "F1": 46.15219227960877,
+          "count": 21
+        }
+      },
+      "by_question_type": {
+        "multi-sentence": {
+          "EM": 30.88235294117647,
+          "F1": 54.616830674142705,
+          "count": 136
+        },
+        "single-sentence": {
+          "EM": 55.033557046979865,
+          "F1": 75.73869600208776,
+          "count": 149
+        }
+      },
+      "sample_predictions": [
+        {
+          "question": "Paris đạt được thành quả gì sau khoảng 4 thế kỷ tính từ ngày Cách mạng Pháp diễn ra?",
+          "gold": [
+            "trở thành một trong những trung tâm văn hóa của thế giới, thủ đô của nghệ thuật và giải trí"
+          ],
+          "prediction": "",
+          "context_length": 147,
+          "question_type": "multi-sentence"
+        },
+        {
+          "question": "Cuộc cách mạng Pháp diễn ra ở đâu?",
+          "gold": [
+            "Paris"
+          ],
+          "prediction": "Paris",
+          "context_length": 147,
+          "question_type": "single-sentence"
+        },
+        {
+          "question": "Kinh đô ánh sáng nổi tiếng về lĩnh vực gì?",
+          "gold": [
+            "nghệ thuật và giải trí"
+          ],
+          "prediction": "",
+          "context_length": 147,
+          "question_type": "multi-sentence"
+        },
+        {
+          "question": "Điều gì đã nói lên Paris là thành phố lý tưởng để khách du lịch?",
+          "gold": [
+            "Kinh đô ánh sáng"
+          ],
+          "prediction": "Kinh đô ánh sáng,",
+          "context_length": 152,
+          "question_type": "multi-sentence"
+        },
+        {
+          "question": "Điều gì đã nói lên New York là thành phố lý tưởng để khách du lịch?",
+          "gold": [],
+          "prediction": "",
+          "context_length": 152,
+          "question_type": null
+        },
+        {
+          "question": "Kinh đô ánh sáng nổi tiếng như thế nào trong lĩnh vực thời trang mua sắm?",
+          "gold": [
+            "Thành phố còn được xem như kinh đô của thời trang cao cấp với nhiều khu phố xa xỉ cùng các trung tâm thương mại lớn"
+          ],
+          "prediction": "cao cấp",
+          "context_length": 152,
+          "question_type": "multi-sentence"
+        },
+        {
+          "question": "Tên gọi Pháp bắt nguồn từ sự việc gì?",
+          "gold": [],
+          "prediction": "nghĩa đen",
+          "context_length": 106,
+          "question_type": null
+        },
+        {
+          "question": "Năm 1844, ngoại ô và nội ô Paris được sát nhập bằng gì?",
+          "gold": [],
+          "prediction": "bức tường thành Thiers.",
+          "context_length": 106,
+          "question_type": null
+        },
+        {
+          "question": "Rừng Vincennes nằm ở đâu của Paris?",
+          "gold": [
+            "Quận 12 ở phía Đông"
+          ],
+          "prediction": "Quận 12 ở phía Đông.",
+          "context_length": 106,
+          "question_type": "multi-sentence"
+        },
+        {
+          "question": "Thời điểm nào nhiệt độ Paris đạt mức cao nhất?",
+          "gold": [
+            "ngày 28 tháng 6 năm 1948"
+          ],
+          "prediction": "28 tháng 6 năm 1948,",
+          "context_length": 143,
+          "question_type": "multi-sentence"
+        },
+        {
+          "question": "Paris trở thành nơi thịnh vượng nhất châu Âu vào thời kì nào?",
+          "gold": [
+            "thế kỷ 17"
+          ],
+          "prediction": "Belle Époque",
+          "context_length": 191,
+          "question_type": "multi-sentence"
+        },
+        {
+          "question": "Châu Âu trở thành nơi thịnh vượng nhất Paris vào thời kì nào?",
+          "gold": [],
+          "prediction": "Belle Époque",
+          "context_length": 191,
+          "question_type": null
+        },
+        {
+          "question": "Ai đã mang  Kito giáo vào Paris?",
+          "gold": [
+            "Thánh Denis"
+          ],
+          "prediction": "",
+          "context_length": 165,
+          "question_type": "multi-sentence"
+        },
+        {
+          "question": "Ai đã cai trị Attila sau khi giải phóng khỏi Paris?",
+          "gold": [],
+          "prediction": "Childéric I",
+          "context_length": 149,
+          "question_type": null
+        },
+        {
+          "question": "Những chiến binh Viking đã tấn công Paris lần đầu vào lúc nào?",
+          "gold": [
+            "Năm 845"
+          ],
+          "prediction": "845,",
+          "context_length": 149,
+          "question_type": "multi-sentence"
+        }
+      ]
+    }
+  },
+  "provenance": "All metrics computed live by run_eval.py — no hard-coded values."
+}

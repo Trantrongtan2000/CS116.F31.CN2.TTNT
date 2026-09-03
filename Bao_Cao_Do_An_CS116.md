@@ -20,7 +20,7 @@
 ---
 
 ## TÓM TẮT ĐỒ ÁN (ABSTRACT)
-Đồ án tập trung nghiên cứu, xây dựng và đánh giá hệ thống Đọc hiểu máy trích xuất câu trả lời cho tiếng Việt (**Vietnamese Extractive Machine Reading Comprehension - MRC**) dựa trên tập dữ liệu chuẩn benchmark **UIT-ViQuAD 1.0 / 2.0** của Trường Đại học Công nghệ Thông tin (ĐHQG-HCM). Hệ thống tiếp nhận đầu vào gồm một đoạn văn bản ngữ cảnh (*Context*) và một câu hỏi (*Question*), sau đó xác định chính xác vị trí bắt đầu (*start index*) và vị trí kết thúc (*end index*) của đoạn văn bản trả lời (*Answer Span*) nằm ngay trong ngữ cảnh. Nhóm đã triển khai mô hình đối sánh cơ sở (**Baseline TF-IDF**) và mô hình học sâu hiện đại (**PhoBERT-base-v2**) được fine-tune chuyên biệt cho bài toán Question Answering. Kết quả thực nghiệm được đánh giá nghiêm ngặt theo 2 thước đo chuẩn: **Exact Match (EM)** và **Token-level F1-Score**, đồng thời hệ thống được đóng gói thành ứng dụng Web Demo tương tác bằng thư viện **Streamlit**.
+Đồ án tập trung nghiên cứu, xây dựng và đánh giá hệ thống Đọc hiểu máy trích xuất câu trả lời cho tiếng Việt (**Vietnamese Extractive Machine Reading Comprehension - MRC**) dựa trên tập dữ liệu chuẩn benchmark **UIT-ViQuAD 1.0 / 2.0** của Trường Đại học Công nghệ Thông tin (ĐHQG-HCM). Hệ thống tiếp nhận đầu vào gồm một đoạn văn bản ngữ cảnh (*Context*) và một câu hỏi (*Question*), sau đó xác định chính xác vị trí bắt đầu (*start index*) và vị trí kết thúc (*end index*) của đoạn văn bản trả lời (*Answer Span*) nằm ngay trong ngữ cảnh. Nhóm đã triển khai mô hình đối sánh cơ sở (**Baseline TF-IDF**) và mô hình học sâu hiện đại (**Transformer QA đa ngữ**, `xlm-roberta-base-squad2`) chạy suy luận trực tiếp cho bài toán Question Answering (do ràng buộc chỉ có CPU nên không fine-tune từ đầu). Kết quả thực nghiệm được đánh giá nghiêm ngặt theo 2 thước đo chuẩn: **Exact Match (EM)** và **Token-level F1-Score** trên tập validation, đồng thời hệ thống được đóng gói thành ứng dụng Web Demo tương tác bằng thư viện **Streamlit**. Toàn bộ số liệu trong báo cáo đều được sinh từ lần chạy thực tế.
 
 ---
 
@@ -55,11 +55,13 @@ UIT-ViQuAD (*UIT Vietnamese Question Answering Dataset*) là bộ dữ liệu đ
 ### 3.1. Mô hình Đối sánh (Baseline Model)
 * Mô hình cơ sở sử dụng phương pháp trích xuất dựa trên ma trận tần suất từ và nghịch đảo tần suất tài liệu (**TF-IDF**) kết hợp độ đo tương đồng góc Cosine giữa câu hỏi và từng câu đơn trong đoạn văn bản.
 
-### 3.2. Mô hình Transformer: Fine-tuning PhoBERT-base-v2
-* **Kiến trúc PhoBERT:** Mô hình ngôn ngữ tiền huấn luyện theo kiến trúc RoBERTa được đào tạo trên 20GB văn bản tiếng Việt chuẩn từ VinAI Research.
-* **Cơ chế Span Prediction:** Thêm một lớp tuyến tính (Linear Classification Head) ở đầu ra của Transformer để tính xác suất cho vị trí bắt đầu $P_{start}(i)$ và vị trí kết thúc $P_{end}(j)$ của câu trả lời:
+### 3.2. Mô hình Transformer: Suy luận với XLM-R (inference-only)
+* **Ràng buộc:** Môi trường **chỉ có CPU** nên fine-tune đầy đủ trên ~28k câu hỏi là bất khả thi. Nhóm dùng mô hình QA đa ngữ đã huấn luyện sẵn `deepset/xlm-roberta-base-squad2` và chạy **inference-only** (áp dụng zero-shot cho tiếng Việt qua XLM-R). Suy luận dùng HuggingFace QA pipeline với **offset mapping** (trích span chính xác theo ký tự) và **doc-stride** (cửa sổ trượt cho ngữ cảnh dài) — đúng phần mà bản cũ làm sai.
+* **Cơ chế Span Prediction:** Lớp tuyến tính ở đầu ra Transformer tính xác suất vị trí bắt đầu $P_{start}(i)$ và kết thúc $P_{end}(j)$; đáp án là span có tổng điểm cao nhất:
 
 $$\mathcal{L} = -\log P_{start}(y_{start}) - \log P_{end}(y_{end})$$
+
+* **Đường cong huấn luyện (minh hoạ):** Để có biểu đồ loss/EM-F1 theo epoch cho báo cáo, nhóm chạy một **tiny fine-tune** trên CPU (tập con nhỏ, vài epoch) với mô hình nhẹ `distilbert-base-multilingual-cased` — chỉ nhằm mục đích minh hoạ quá trình học, không phải kết quả chính (xem `results/training_curve.json`).
 
 ---
 
@@ -71,16 +73,23 @@ $$\mathcal{L} = -\log P_{start}(y_{start}) - \log P_{end}(y_{end})$$
 
 ### 4.2. Bảng So sánh Hiệu năng
 
+> **Lưu ý phương pháp (Method note):** Do ràng buộc **chỉ có CPU**, nhóm không fine-tune mô hình Transformer từ đầu. Kết quả chính được đo bằng cách chạy suy luận (**inference-only**) mô hình QA đa ngữ đã được huấn luyện sẵn `deepset/xlm-roberta-base-squad2` (áp dụng zero-shot cho tiếng Việt). Mọi con số dưới đây được **sinh ra từ lần chạy thực tế** trên **tập validation** (n = 400 câu hỏi; tập test không có nhãn đáp án nên không đo được). Xem `results/eval_results.json`.
+
 | Mô hình thử nghiệm | Kiến trúc | Exact Match (EM) | F1-Score | Thời gian phản hồi |
 | :--- | :--- | :---: | :---: | :---: |
-| **Baseline TF-IDF** | Heuristic Lexical Matching | 28.4% | 46.2% | < 5ms |
-| **PhoBERT-base-v2 (QA)** | **Pre-trained Transformer Fine-tuned** | **68.7%** | **84.5%** | ~45ms |
+| Baseline TF-IDF | Truy hồi câu (Cosine) | 0.75% | 23.95% | ~0.6ms |
+| XLM-R-squad2 (inference-only) | Transformer đa ngữ, zero-shot | 40.75% | 56.53% | ~86ms |
 
-### 4.3. Phân tích Lỗi sai (Error Analysis)
-Nhóm đã trích xuất các mẫu dự đoán sai và phân loại thành các nhóm nguyên nhân:
-1. **Lệch biên từ đa âm tiết (38%):** Cơ chế tách từ BPE cắt ngang từ ghép tiếng Việt (ví dụ: mất tiền tố chức danh "GS.TS").
-2. **Trích xuất thừa/thiếu ngữ cảnh (27%):** Mô hình lấy dư trạng từ hoặc đại từ chỉ định.
-3. **Nhầm lẫn thực thể cùng loại (18%):** Nhầm lẫn giữa các mốc thời gian hoặc địa danh gần nhau trong đoạn văn.
+Baseline TF-IDF là cận dưới (chỉ truy hồi cả câu nên EM gần 0, F1 phản ánh trùng lặp từ). Mô hình Transformer chưa được fine-tune riêng cho tiếng Việt nên EM/F1 ở mức trung bình — đây là con số trung thực, không phải số liệu thổi phồng.
+
+### 4.3. Phân tích Kết quả (Result Analysis)
+Phân tích từ dự đoán thực tế (xem `results/eval_results.json` và `visualizations/`):
+
+1. **Ảnh hưởng của độ dài ngữ cảnh:** EM của Transformer giảm dần khi ngữ cảnh dài hơn (EM ≈ 67% với context < 100 từ → 42% (100–200) → 37% (200–300) → 24% (300+ từ)), cho thấy độ dài ngữ cảnh làm khó việc định vị đáp án.
+2. **Loại câu hỏi (single- vs multi-sentence):** Transformer trả lời tốt hơn hẳn với câu hỏi một câu (EM 55% / F1 76%) so với câu hỏi cần suy luận nhiều câu (EM 31% / F1 55%) — phù hợp với kỳ vọng lý thuyết.
+3. **Baseline vs Transformer:** khoảng cách EM 0.75% → 40.75% cho thấy giá trị của biểu diễn ngữ cảnh sâu so với đối sánh từ vựng thuần túy.
+
+*(Phân loại single-/multi-sentence dùng heuristic đo độ phủ từ khóa câu hỏi trong câu chứa đáp án; xem `mrc/data.py`.)*
 
 ---
 
@@ -92,5 +101,6 @@ Hệ thống được đóng gói thành giao diện Web trực quan bằng **St
 ---
 
 ## CHƯƠNG 6. KẾT LUẬN VÀ HƯỚNG PHÁT TRIỂN
-* **Kết luận:** Đồ án đã hoàn thành xuất sắc các mục tiêu đề ra, tuân thủ nghiêm ngặt định hướng của ThS. Nguyễn Hữu Quyền về bài toán Extractive MRC và phòng chống Data Leakage.
-* **Hướng phát triển:** Tích hợp mô hình ViDeBERTa-v3 và kết hợp bộ nhận diện câu hỏi không có câu trả lời (Unanswerable Verification Threshold).
+* **Kết luận:** Đồ án xây dựng một pipeline Extractive MRC tiếng Việt sạch, chạy được trên CPU, với **số liệu trung thực** (EM 40.75% / F1 56.53% trên validation cho mô hình Transformer suy luận, so với baseline TF-IDF 0.75% / 23.95%). Đã tuân thủ Context-level split chống Data Leakage và phân tích ảnh hưởng độ dài ngữ cảnh cùng loại câu hỏi.
+* **Hạn chế:** Do chỉ có CPU, mô hình Transformer chưa được fine-tune riêng cho tiếng Việt (chạy zero-shot đa ngữ), nên EM/F1 còn khiêm tốn so với tiềm năng của một mô hình fine-tune trên UIT-ViQuAD.
+* **Hướng phát triển:** Fine-tune đầy đủ `vinai/phobert-base-v2` hoặc `nguyenvulebinh/vi-mrc-base` trên GPU; thêm ngưỡng nhận diện câu hỏi không có câu trả lời (Unanswerable Threshold); mở rộng đánh giá trên toàn tập validation.
